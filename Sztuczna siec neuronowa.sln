@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sztuczna siec neuronowa", "Sztuczna siec neuronowa.csproj", "{BE617A80-0489-45B9-96D7-9A5047717A9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE617A80-0489-45B9-96D7-9A5047717A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE617A80-0489-45B9-96D7-9A5047717A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE617A80-0489-45B9-96D7-9A5047717A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE617A80-0489-45B9-96D7-9A5047717A9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05397FFC-62C8-4CEE-81CA-A7522E3B658A}
+	EndGlobalSection
+EndGlobal
