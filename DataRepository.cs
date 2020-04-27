@@ -18,17 +18,32 @@ namespace Sztuczna_siec_neuronowa
         public double[][] getExceptedValues()
         {
             double[][] ExceptedValues = new double[data.Length][];
-            
+
             for (int i = 0; i < data.Length; i++)
             {
-                ExceptedValues[i]= new double[3];
-                ExceptedValues[i][0]= data[i][data[i].Length - 3];
-                ExceptedValues[i][1] = data[i][data[i].Length -2 ];
+                ExceptedValues[i] = new double[3];
+                ExceptedValues[i][0] = data[i][data[i].Length - 3];
+                ExceptedValues[i][1] = data[i][data[i].Length - 2];
                 ExceptedValues[i][2] = data[i][data[i].Length - 1];
+                //ExceptedValues[i] = new double[1];
+                //ExceptedValues[i][0] = data[i][data[i].Length - 3];
+                //if (data[i][data[i].Length - 3] == 1)
+                //{
+                //    ExceptedValues[i][0] = 0;
+                //}
+                //else if (data[i][data[i].Length - 2] == 1)
+                //{
+                //    ExceptedValues[i][0] = 0.5;
+                //}
+                //else if (data[i][data[i].Length - 1] == 1)
+                //{
+                //    ExceptedValues[i][0] = 1;
+                //}
+
             }
             return ExceptedValues;
         }
-        public double[][] getTrainValues() 
+        public double[][] getTrainValues()
         {
             double[][] TrainingData = new double[data.Length][];
             for (int i = 0; i < data.Length; i++)
@@ -46,14 +61,14 @@ namespace Sztuczna_siec_neuronowa
         private double[][] readData()
         {
 
-            string[] lines = File.ReadAllLines(@"D:\Semestr 4\Systemy sztucznej inteligencji\IRIS2.txt");
+            string[] lines = File.ReadAllLines(@"D:\Semestr 4\Systemy sztucznej inteligencji\IRIS.txt");
 
             double[][] data = new double[lines.Length][];
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] tmp = lines[i].Split(',');
 
-                data[i] = new double[tmp.Length +2];
+                data[i] = new double[tmp.Length + 2];
 
                 for (int j = 0; j < tmp.Length - 1; j++)
                 {
@@ -64,7 +79,7 @@ namespace Sztuczna_siec_neuronowa
                 {
                     case "Iris-setosa":
                         data[i][tmp.Length - 1] = 1;
-                        data[i][tmp.Length ] = 0;
+                        data[i][tmp.Length] = 0;
                         data[i][tmp.Length + 1] = 0;
                         break;
                     case "Iris-versicolor":
@@ -84,8 +99,25 @@ namespace Sztuczna_siec_neuronowa
                         data[i][tmp.Length + 1] = 0;
                         break;
                 }
+
+                double[] colMin = { 4.3, 2, 1, 0.1 };
+                double[] colmax = { 7.9, 4.4, 6.9, 2.5 };
+                double[] minMaxDiffs = { 3.6, 2.4, 5.9, 2.4 };
+                for (int j = 0; j < tmp.Length - 1; j++)
+                {
+                    data[i][j] = normalize(data[i][j], colMin[j], minMaxDiffs[j]);
+
+                }
             }
             return data;
+        }
+        private double normalize(double value, double min, double diff)
+        {
+
+            value = (double)((value - min) / diff);
+            //Console.WriteLine(value);
+            return value;
+
         }
     }
 }

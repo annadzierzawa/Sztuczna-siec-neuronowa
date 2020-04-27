@@ -22,7 +22,7 @@ namespace Sztuczna_siec_neuronowa
             // Create input layer that will collect inputs.
             CreateInputLayer(numberOfInputNeurons);
 
-            _learningRate = 2.95;
+            _learningRate = 0.9;
         }
 
         public void AddLayer(Layer newLayer)
@@ -73,7 +73,7 @@ namespace Sztuczna_siec_neuronowa
                     {
                         outputs.Add(x.CalculateOutput());
                     });
-
+                    
                     // Calculate error by summing errors on all output neurons.
                     totalError = CalculateTotalError(outputs, j);
                     HandleOutputLayer(j);
@@ -94,11 +94,17 @@ namespace Sztuczna_siec_neuronowa
         {
             double totalError = 0;
 
-            outputs.ForEach(output =>
+            for (int i = 0; i < outputs.Count; i++)
             {
-                var error = Math.Pow(output - _expectedResult[row][outputs.IndexOf(output)], 2);
+                var error = Math.Pow(outputs[i] - _expectedResult[row][i], 2);
                 totalError += error;
-            });
+            }
+
+            //outputs.ForEach(output =>
+            //{
+            //    var error = Math.Pow(output - _expectedResult[row][outputs.IndexOf(output)], 2);
+            //    totalError += error;
+            //});
 
             return totalError;
         }
