@@ -10,9 +10,12 @@ namespace Sztuczna_siec_neuronowa
     class DataRepository
     {
 
+        public INormalizator normalizator = new NormalizatorZeroOne();
+
         private double[][] data;
-        public DataRepository()
+        public DataRepository(INormalizator _normalizator)
         {
+            normalizator = _normalizator;
             data = readData();
         }
         public double[][] getExceptedValues()
@@ -61,7 +64,7 @@ namespace Sztuczna_siec_neuronowa
         private double[][] readData()
         {
 
-            string[] lines = File.ReadAllLines(@"D:\Semestr 4\Systemy sztucznej inteligencji\IRIS.txt");
+            string[] lines = File.ReadAllLines(@"D:\Semestr 4\Systemy sztucznej inteligencji\IRIS2.txt");
 
             double[][] data = new double[lines.Length][];
             for (int i = 0; i < lines.Length; i++)
@@ -100,12 +103,16 @@ namespace Sztuczna_siec_neuronowa
                         break;
                 }
 
+
+
                 double[] colMin = { 4.3, 2, 1, 0.1 };
                 double[] colmax = { 7.9, 4.4, 6.9, 2.5 };
                 double[] minMaxDiffs = { 3.6, 2.4, 5.9, 2.4 };
+                var min = data[i].Min();
+                var max = data[i].Max();
                 for (int j = 0; j < tmp.Length - 1; j++)
                 {
-                    data[i][j] = normalize(data[i][j], colMin[j], minMaxDiffs[j]);
+                    data[i][j] = normalizator.normalize(data[i][j], min, max);
 
                 }
             }

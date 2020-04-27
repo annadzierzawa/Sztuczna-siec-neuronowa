@@ -47,12 +47,15 @@
     <Compile Include="IActivationFunction.cs" />
     <Compile Include="IInputFunction.cs" />
     <Compile Include="INeuron.cs" />
+    <Compile Include="INormalizator.cs" />
     <Compile Include="InputSynapse.cs" />
     <Compile Include="ISynapse.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="NeuralLayerFactory.cs" />
     <Compile Include="Neuron.cs" />
+    <Compile Include="NormalizatorColumnMinMax.cs" />
+    <Compile Include="NormalizatorZeroOne.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RectifiedActivationFuncion.cs" />

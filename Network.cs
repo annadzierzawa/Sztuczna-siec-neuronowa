@@ -22,7 +22,7 @@ namespace Sztuczna_siec_neuronowa
             // Create input layer that will collect inputs.
             CreateInputLayer(numberOfInputNeurons);
 
-            _learningRate = 0.9;
+            _learningRate = 0.2;
         }
 
         public void AddLayer(Layer newLayer)
@@ -62,6 +62,7 @@ namespace Sztuczna_siec_neuronowa
             double totalError = 0;
              for (int i = 0; i < numberOfEpochs; i++)
             {
+                Console.WriteLine("Epcho : " + i);
                 for (int j = 0; j < inputs.GetLength(0); j++)
                 {
                     PushInputValues(inputs[j]);
@@ -79,7 +80,6 @@ namespace Sztuczna_siec_neuronowa
                     HandleOutputLayer(j);
                     HandleHiddenLayers();
                 }
-
             }
             
         }
