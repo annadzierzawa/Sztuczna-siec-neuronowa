@@ -62,7 +62,7 @@ namespace Sztuczna_siec_neuronowa
             double totalError = 0;
              for (int i = 0; i < numberOfEpochs; i++)
             {
-                Console.WriteLine("Epcho : " + i);
+                //Console.WriteLine("Epcho : " + i);
                 for (int j = 0; j < inputs.GetLength(0); j++)
                 {
                     PushInputValues(inputs[j]);

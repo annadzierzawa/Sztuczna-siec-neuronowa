@@ -52,9 +52,45 @@ namespace Sztuczna_siec_neuronowa
 
             network.PushExpectedValues(data.getExceptedValues());
 
-            network.Train(data.getTrainValues(), 1000);
-
+            network.Train(data.getTrainValues(), 500);
             var idx = 0;
+            foreach (var input in inputs)
+            {
+                network.PushInputValues(input);
+                var outputs = network.GetOutput();
+                var max = outputs.Max();
+                var indexOfMax = outputs.FindIndex(x => x == max);
+                if (indexOfMax == results[idx])
+                {
+                    Console.WriteLine(idx + " jest ok");
+                }
+                else
+                {
+                    Console.WriteLine(idx + " NIE jest ok");
+                }
+                idx++;
+            }
+            network.Train(data.getTrainValues(), 500);
+             idx = 0;
+            foreach (var input in inputs)
+            {
+                network.PushInputValues(input);
+                var outputs = network.GetOutput();
+                var max = outputs.Max();
+                var indexOfMax = outputs.FindIndex(x => x == max);
+                if (indexOfMax == results[idx])
+                {
+                    Console.WriteLine(idx + " jest ok");
+                }
+                else
+                {
+                    Console.WriteLine(idx + " NIE jest ok");
+                }
+                idx++;
+            }
+            network.Train(data.getTrainValues(), 500);
+
+            idx = 0;
             foreach (var input in inputs)
             {
                 network.PushInputValues(input);
