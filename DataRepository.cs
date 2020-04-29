@@ -116,6 +116,7 @@ namespace Sztuczna_siec_neuronowa
 
                 }
             }
+            data= Shuffle(data);
             return data;
         }
         private double normalize(double value, double min, double diff)
@@ -125,6 +126,19 @@ namespace Sztuczna_siec_neuronowa
             //Console.WriteLine(value);
             return value;
 
+        }
+        private double[][] Shuffle(double[][] array)
+        {
+            Random rnd = new Random();
+            int n = array.Length;
+            for (int i = 0; i < (n - 1); i++)
+            {
+                int r = i + rnd.Next(n - i);
+                double[] t = array[r];
+                array[r] = array[i];
+                array[i] = t;
+            }
+            return array;
         }
     }
 }

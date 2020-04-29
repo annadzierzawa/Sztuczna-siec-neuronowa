@@ -17,7 +17,8 @@ namespace Sztuczna_siec_neuronowa
 
         public double CalculateOutput(double input)
         {
-            return (1 / (1 + Math.Exp(-input * _coeficient)));
+           return (2 / (1 + Math.Exp(-input * _coeficient)));
+           // return (1 / (1 + Math.Exp(-input * _coeficient)));
         }
     }
 }

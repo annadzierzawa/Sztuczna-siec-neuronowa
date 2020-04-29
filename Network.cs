@@ -22,7 +22,7 @@ namespace Sztuczna_siec_neuronowa
             // Create input layer that will collect inputs.
             CreateInputLayer(numberOfInputNeurons);
 
-            _learningRate = 0.2;
+            _learningRate = 0.6;
         }
 
         public void AddLayer(Layer newLayer)
@@ -80,6 +80,7 @@ namespace Sztuczna_siec_neuronowa
                     HandleOutputLayer(j);
                     HandleHiddenLayers();
                 }
+                Console.WriteLine(totalError.ToString());
             }
             
         }
@@ -121,7 +122,8 @@ namespace Sztuczna_siec_neuronowa
                     var expectedOutput = _expectedResult[row][_layers.Last().Neurons.IndexOf(neuron)];
                     //var expectedOutput = _expectedResult[row][0];
 
-                    var nodeDelta = (expectedOutput - output) * output * (1 - output);
+                    var nodeDelta = (expectedOutput - output) *output* (1 - output);    //1,0
+                    //var nodeDelta = (expectedOutput - output) * output * (1 - output);    //1,0
                     var delta = -1 * netInput * nodeDelta;
 
                     connection.UpdateWeight(_learningRate, delta);
@@ -154,6 +156,7 @@ namespace Sztuczna_siec_neuronowa
                             });
                         });
 
+                        
                         var delta = -1 * netInput * sumPartial * output * (1 - output);
                         connection.UpdateWeight(_learningRate, delta);
                     });
