@@ -80,7 +80,7 @@ namespace Sztuczna_siec_neuronowa
                     HandleOutputLayer(j);
                     HandleHiddenLayers();
                 }
-                Console.WriteLine(totalError.ToString());
+                Console.WriteLine("totalError= "+ totalError.ToString());
             }
             
         }

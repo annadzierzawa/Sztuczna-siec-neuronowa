@@ -10,6 +10,7 @@ namespace Sztuczna_siec_neuronowa
     {
         static void Main(string[] args)
         {
+            
             var data = new DataRepository(new NormalizatorZeroOne());
 
             var inputs = new List<double[]>(9);
@@ -23,9 +24,7 @@ namespace Sztuczna_siec_neuronowa
             inputs.Add(new double[] { 5.1, 2.5, 3.0, 1.1 });
             inputs.Add(new double[] { 6.5, 3.0, 5.2, 2.0 });
             inputs.Add(new double[] { 5.9, 3.0, 5.1, 1.8 });
-            inputs.Add(new double[] { 5.2, 2.7, 3.9, 1.4 });
-            inputs.Add(new double[] { 4.4, 3.2, 1.3, 0.2 });
-            inputs.Add(new double[] { 6.7, 3.3, 5.7, 2.1 });
+            
 
             var results = new int[] { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
 
@@ -55,7 +54,7 @@ namespace Sztuczna_siec_neuronowa
 
             network.PushExpectedValues(data.getExceptedValues());
 
-            network.Train(data.getTrainValues(), 500);
+            network.Train(data.getTrainValues(), 1000);
             var idx = 0;
             foreach (var input in inputs)
             {
@@ -63,14 +62,22 @@ namespace Sztuczna_siec_neuronowa
                 var outputs = network.GetOutput();
                 var max = outputs.Max();
                 var indexOfMax = outputs.FindIndex(x => x == max);
-                if (indexOfMax == results[idx])
-                {
-                    Console.WriteLine(idx + " jest ok");
-                }
-                else
-                {
-                    Console.WriteLine(idx + " NIE jest ok");
-                }
+                Console.WriteLine("Value:");
+                Console.WriteLine(outputs[0]);
+                Console.WriteLine(outputs[1]);
+                Console.WriteLine(outputs[2]);
+                Console.WriteLine("Expected Value: ");
+                Console.WriteLine(results[idx]);
+               
+                //if (indexOfMax == results[idx])
+                //{
+
+                //    Console.WriteLine(idx + " jest ok");
+                //}
+                //else
+                //{
+                //    Console.WriteLine(idx + " NIE jest ok");
+                //}
                 idx++;
             }
             //network.Train(data.getTrainValues(), 500);
